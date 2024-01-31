@@ -3,8 +3,9 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { definitions } from "../data";
 import Link from "next/link";
-import { caveat } from "@/fonts";
+import { caveat, inter, galano } from "@/fonts";
 import { Suspense } from "react";
+
 let initialCounters = Array(definitions.length).fill(0);
 
 function Search() {
@@ -31,23 +32,30 @@ export default function QuestionList() {
   }
 
   return (
-    <div className={caveat.className}>
+    <div className={galano.className}>
       <div className="max-w-lg mx-auto">
-        <header className="bg-indigo-300 px-10 py-10 text-white font-bold text-3xl rounded-lg mb-5 sticky top-0">
-          <Suspense>
-            <Search></Search>
-          </Suspense>
-        </header>
+        <div className="sticky top-0">
+          <div className="">
+            <header className="px-10 py-10 text-hayat_yesil bg-hayat_mavi font-bold text-3xl rounded-lg mb-5">
+              <Suspense>
+                <Search></Search>
+              </Suspense>
+            </header>
+          </div>
+        </div>
         <ul>
           {counters.map((counter, i) => (
             <li
-              className="odd:bg-indigo-50 odd:text-black even:bg-indigo-100 even:text-black text-xs"
+              className="odd:bg-indigo-50 odd:text-black even:bg-indigo-100 even:text-black text-sm"
               key={i}
             >
-              {definitions[i].name}
               <span className="uppercase font-bold">{definitions[i].tip}</span>
+              <br></br>
+              {definitions[i].name}
+              <br></br>
+
               <button
-                className="bg-indigo-500 m-1 p-1 text-white rounded-s hover:bg-indigo-100 hover:text-black"
+                className="bg-indigo-500 m-1 p-1 text-white rounded-s hover:bg-indigo-200 hover:text-black"
                 onClick={() => {
                   handleIncrementClick(i);
                 }}
@@ -62,16 +70,18 @@ export default function QuestionList() {
             className="m-4 p-4 bg-indigo-500 rounded-xl text-white hover:bg-indigo-100 hover:text-black shadow-black shadow-md shadow-transparent"
             href={"./"}
           >
-            &#x021E6;
+            Geri
           </Link>
           <button
             className="m-4 p-4 bg-indigo-500 rounded-xl text-white hover:bg-indigo-100 hover:text-black shadow-black shadow-md shadow-transparent"
             onClick={() => {
               alert(
-                counters.reduce((accumulator, currentValue) => {
-                  return accumulator + currentValue;
-                }, 0) /
-                  (counters.length - counters.filter((str) => str === 0).length)
+                "Puan Ortalaması \n" +
+                  counters.reduce((accumulator, currentValue) => {
+                    return accumulator + currentValue;
+                  }, 0) /
+                    (counters.length -
+                      counters.filter((str) => str === 0).length)
               );
             }}
           >
