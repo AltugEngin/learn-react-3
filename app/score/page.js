@@ -7,9 +7,15 @@ import { caveat } from "@/fonts";
 import { Suspense } from "react";
 let initialCounters = Array(definitions.length).fill(0);
 
-export default function QuestionList() {
+function Search() {
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
+  return { search };
+}
+
+export default function QuestionList() {
+  //const searchParams = useSearchParams();
+  //const search = searchParams.get("search");
   const [counters, setCounters] = useState(initialCounters);
 
   function handleIncrementClick(index) {
@@ -28,7 +34,9 @@ export default function QuestionList() {
     <div className={caveat.className}>
       <div className="max-w-lg mx-auto">
         <header className="bg-indigo-300 px-10 py-10 text-white font-bold text-3xl rounded-lg mb-5 sticky top-0">
-          {search}
+          <Suspense>
+            <Search></Search>
+          </Suspense>
         </header>
         <ul>
           {counters.map((counter, i) => (
