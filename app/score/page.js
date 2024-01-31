@@ -10,7 +10,7 @@ let initialCounters = Array(definitions.length).fill(0);
 function Search() {
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
-  return { search };
+  return search;
 }
 
 export default function QuestionList() {
