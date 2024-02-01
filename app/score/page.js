@@ -6,6 +6,7 @@ import Link from "next/link";
 import { caveat, inter, galano } from "@/fonts";
 import { Suspense } from "react";
 
+
 let initialCounters = Array(definitions.length).fill(0);
 
 function Search() {
@@ -13,6 +14,10 @@ function Search() {
   const search = searchParams.get("search");
   return search;
 }
+
+
+
+
 
 export default function QuestionList() {
   //const searchParams = useSearchParams();
@@ -83,6 +88,7 @@ export default function QuestionList() {
                     (counters.length -
                       counters.filter((str) => str === 0).length)
               );
+                      
             }}
           >
             Gönder
@@ -92,3 +98,19 @@ export default function QuestionList() {
     </div>
   );
 }
+
+
+// Insert data into the "locations" table
+    /*
+    const insertedUsers = await Promise.all(
+      users.map(async (user) => {
+        const hashedPassword = await hash(user.password, 10);
+        //const hashedPassword = user.password;
+        return client.sql`
+        INSERT INTO users (id, name, email, password)
+        VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword})
+        ON CONFLICT (id) DO NOTHING;
+      `;
+      })
+    );
+    */
