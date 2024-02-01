@@ -3,12 +3,17 @@ import { useState } from "react";
 import Link from "next/link";
 import { locations } from "./data";
 import { galano } from "@/fonts";
+import { Document, Page } from "react-pdf";
+import { pdfjs } from "react-pdf";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 function Answer() {
   const [loc, setLoc] = useState(locations[0]);
   const getLocation = (e) => {
     setLoc(e.target.value);
   };
+
   return (
     <div className={galano.className}>
       <div className="max-w-lg">
@@ -35,6 +40,14 @@ function Answer() {
             href={{ pathname: "./score", query: { search: loc } }}
           >
             Puanlama
+          </Link>
+        </div>
+        <div className="mt-5">
+          <Link
+            className="w-full inline-block px-4 py-2 text-center bg-indigo-500 rounded-xl text-white font-bold hover:bg-indigo-100 hover:text-black hover:font-bold shadow-black shadow-md uppercase"
+            href="./5s_manual.pdf"
+          >
+            KULLANICI EL KİTABI
           </Link>
         </div>
       </div>

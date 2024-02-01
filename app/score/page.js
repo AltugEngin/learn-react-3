@@ -36,7 +36,7 @@ export default function QuestionList() {
       <div className="max-w-lg mx-auto">
         <div className="sticky top-0">
           <div className="">
-            <header className="px-10 py-10 text-hayat_yesil bg-hayat_mavi font-bold text-3xl rounded-lg mb-5">
+            <header className="px-5 py-5 text-hayat_yesil bg-hayat_mavi font-bold text-3xl rounded-lg mb-5">
               <Suspense>
                 <Search></Search>
               </Suspense>
