@@ -18,9 +18,9 @@ function Answer() {
     <div className={galano.className}>
       <div className="max-w-lg">
         <div className="container relative">
-          <h1 className="font-bold text-2xl text-gray-900 z-10 absolute bottom-5">
-            5S SAHA DENETİM UYGULAMASI{" "}
-            <span className="text-indigo-500">GEBZE</span>
+          <h1 className="font-bold text-2xl text-hayat_yesil z-10 absolute bottom-5">
+            <span className="font-bold text-9xl">5S</span> SAHA DENETİM
+            UYGULAMASI <span className="text-hayat_mavi">GEBZE</span>
           </h1>
           <img className="rounded-xl blur-sm" src="./workshop.jpeg"></img>
         </div>
