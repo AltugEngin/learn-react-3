@@ -14,7 +14,11 @@ function Search() {
   const search = searchParams.get("search");
   return search;
 }
-
+function User(){
+  const searchParams = useSearchParams();
+  const user = searchParams.get("user");
+  return user;
+}
 
 
 
@@ -42,8 +46,9 @@ export default function QuestionList() {
         <div className="sticky top-0">
           <div className="">
             <header className="px-5 py-5 text-hayat_yesil bg-hayat_mavi font-bold text-3xl rounded-lg mb-5">
-              <Suspense>
-                <Search></Search>
+              <Suspense className="flex flex-col">
+                <div><Search></Search></div>
+                <div className="text-sm"><User></User></div>
               </Suspense>
             </header>
           </div>

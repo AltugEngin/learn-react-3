@@ -8,15 +8,19 @@ import { useUser,UserButton } from "@clerk/nextjs";
 
 
 function Answer() {
+
+  const { isLoaded, isSignedIn, user } = useUser();
   const [loc, setLoc] = useState(locations[0]);
   const getLocation = (e) => {
     setLoc(e.target.value);
   };
-  const { isLoaded, isSignedIn, user } = useUser();
+  
 
   if (!isLoaded || !isSignedIn) {
     return null;
   }
+
+  
 
   
 
@@ -52,7 +56,7 @@ function Answer() {
         <div className="mt-5">
           <Link
             className="w-full inline-block px-4 py-2 text-center bg-indigo-500 rounded-xl text-white font-bold hover:bg-indigo-100 hover:text-black hover:font-bold shadow-black shadow-md uppercase"
-            href={{ pathname: "./score", query: { search: loc } }}
+            href={{ pathname: "./score", query: { search: loc,user: user.emailAddresses[0].emailAddress} }}
           >
             Puanlama
           </Link>
