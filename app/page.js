@@ -3,20 +3,35 @@ import { useState } from "react";
 import Link from "next/link";
 import { locations } from "./data";
 import { galano } from "@/fonts";
-import { Document, Page } from "react-pdf";
-import { pdfjs } from "react-pdf";
+import { useUser,UserButton } from "@clerk/nextjs";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+
 
 function Answer() {
   const [loc, setLoc] = useState(locations[0]);
   const getLocation = (e) => {
     setLoc(e.target.value);
   };
+  const { isLoaded, isSignedIn, user } = useUser();
+
+  if (!isLoaded || !isSignedIn) {
+    return null;
+  }
+
+  
 
   return (
     <div className={galano.className}>
+       
       <div className="max-w-lg">
+        <div className="flex flex-col items-end">
+      <div>
+      <UserButton afterSignOutUrl="/"/>
+    </div>
+      <div>
+      Merhaba, {user.firstName}!
+    </div>
+    <div className="text-gray-500">{user.emailAddresses[0].emailAddress}</div></div>
         <div className="container relative">
           <h1 className="font-bold text-2xl text-hayat_yesil z-10 absolute bottom-5">
             <span className="font-bold text-9xl">5S</span> SAHA DENETİM
