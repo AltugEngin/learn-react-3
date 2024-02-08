@@ -7,6 +7,10 @@ import { caveat, inter, galano } from "@/fonts";
 import { Suspense } from "react";
 
 
+
+
+
+
 let initialCounters = Array(definitions.length).fill(0);
 
 function Search() {
@@ -20,14 +24,18 @@ function User(){
   return user;
 }
 
-
+function Result(){
+  
+}
 
 
 export default function QuestionList() {
   //const searchParams = useSearchParams();
   //const search = searchParams.get("search");
   const [counters, setCounters] = useState(initialCounters);
-
+  const searchParams = useSearchParams();
+  const user = searchParams.get("user");
+  const location=searchParams.get("search");
   function handleIncrementClick(index) {
     const nextCounters = counters.map((c, i) => {
       if (i === index) {
@@ -75,29 +83,21 @@ export default function QuestionList() {
             </li>
           ))}
         </ul>
-        <footer className="bg-indigo-700 mt-5 rounded-xl bottom-0 sticky">
+        <footer className="bg-indigo-700 mt-5 rounded-xl bottom-5 sticky">
           <Link
             className="m-4 p-4 bg-indigo-500 rounded-xl text-white hover:bg-indigo-100 hover:text-black shadow-black shadow-md shadow-transparent"
             href={"./"}
           >
             Geri
           </Link>
-          <button
-            className="m-4 p-4 bg-indigo-500 rounded-xl text-white hover:bg-indigo-100 hover:text-black shadow-black shadow-md shadow-transparent"
-            onClick={() => {
-              alert(
-                "Puan Ortalaması \n" +
-                  counters.reduce((accumulator, currentValue) => {
+          
+          <Link className="m-4 p-4 bg-indigo-500 rounded-xl text-white hover:bg-indigo-100 hover:text-black shadow-black shadow-md shadow-transparent" href={{pathname:"../api/add-row",query:{user:user,search:location,result:counters.reduce((accumulator, currentValue) => {
                     return accumulator + currentValue;
                   }, 0) /
                     (counters.length -
-                      counters.filter((str) => str === 0).length)
-              );
-                      
-            }}
-          >
-            Gönder
-          </button>
+                      counters.filter((str) => str === 0).length)}}}>
+                        Gönder
+                        </Link>
         </footer>
       </div>
     </div>
@@ -105,17 +105,3 @@ export default function QuestionList() {
 }
 
 
-// Insert data into the "locations" table
-    /*
-    const insertedUsers = await Promise.all(
-      users.map(async (user) => {
-        const hashedPassword = await hash(user.password, 10);
-        //const hashedPassword = user.password;
-        return client.sql`
-        INSERT INTO users (id, name, email, password)
-        VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword})
-        ON CONFLICT (id) DO NOTHING;
-      `;
-      })
-    );
-    */

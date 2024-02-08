@@ -33,7 +33,7 @@ function Answer() {
       <UserButton afterSignOutUrl="/"/>
     </div>
       <div>
-      Merhaba, {user.firstName}!
+      Merhaba!
     </div>
     <div className="text-gray-500">{user.emailAddresses[0].emailAddress}</div></div>
         <div className="container relative">
@@ -68,6 +68,7 @@ function Answer() {
           >
             KULLANICI EL KİTABI
           </Link>
+          <Link className="invisible" href={{pathname:"./api/add-table"}}>DB YARAT</Link>
         </div>
       </div>
     </div>
