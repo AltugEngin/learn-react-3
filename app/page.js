@@ -18,7 +18,7 @@ function Answer() {
   if (!isLoaded || !isSignedIn) {
     return null;
   }
-
+/*
   switch(user.emailAddresses[0].emailAddress) {
     case "altug.engin@keas.com.tr":
       // code block
@@ -29,7 +29,7 @@ function Answer() {
     default:
       // code block
   }
-
+*/
   
 
   return (
