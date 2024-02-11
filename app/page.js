@@ -57,7 +57,7 @@ function Answer() {
             onChange={(e) => getLocation(e)}
           >
             {locations.map((x, y) => (
-              <option key={y} disabled={y==5}>{x}</option>
+              <option key={y} disabled={false}>{x}</option>
             ))}
           </select>
         </div>
