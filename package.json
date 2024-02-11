@@ -10,6 +10,8 @@
     "seed": "node -r dotenv/config ./scripts/seed.mjs"
   },
   "dependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/standalone": "^7.23.10",
     "@clerk/nextjs": "^4.29.5",
     "@vercel/postgres": "^0.7.2",
     "bcryptjs": "^2.4.3",

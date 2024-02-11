@@ -6,7 +6,6 @@ import { galano } from "@/fonts";
 import { useUser,UserButton } from "@clerk/nextjs";
 
 
-
 function Answer() {
 
   const { isLoaded, isSignedIn, user } = useUser();
@@ -14,13 +13,22 @@ function Answer() {
   const getLocation = (e) => {
     setLoc(e.target.value);
   };
-  
-
+  const selection="y==5 || y==8 || y==12";
+  const sele="false";
   if (!isLoaded || !isSignedIn) {
     return null;
   }
 
-  
+  switch(user.emailAddresses[0].emailAddress) {
+    case "altug.engin@keas.com.tr":
+      // code block
+      break;
+    case y:
+      // code block
+      break;
+    default:
+      // code block
+  }
 
   
 
@@ -49,7 +57,7 @@ function Answer() {
             onChange={(e) => getLocation(e)}
           >
             {locations.map((x, y) => (
-              <option key={y}>{x}</option>
+              <option key={y} disabled={y==5}>{x}</option>
             ))}
           </select>
         </div>
@@ -68,8 +76,11 @@ function Answer() {
           >
             KULLANICI EL KİTABI
           </Link>
+          <div className="mt-5"><Link className="w-full inline-block px-4 py-2 text-center bg-indigo-500 rounded-xl text-white font-bold hover:bg-indigo-100 hover:text-black hover:font-bold shadow-black shadow-md uppercase"
+            href={{ pathname: "./api/view-rows" }}>SONUÇLAR</Link></div>
           <Link className="invisible" href={{pathname:"./api/add-table"}}>DB YARAT</Link>
         </div>
+        
       </div>
     </div>
   );

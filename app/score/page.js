@@ -24,9 +24,7 @@ function User(){
   return user;
 }
 
-function Result(){
-  
-}
+
 
 
 export default function QuestionList() {
@@ -83,19 +81,23 @@ export default function QuestionList() {
             </li>
           ))}
         </ul>
-        <footer className="bg-indigo-700 mt-5 rounded-xl bottom-5 sticky">
+        <footer className="bg-indigo-700 py-5 rounded-lg bottom-0 sticky">
           <Link
-            className="m-4 p-4 bg-indigo-500 rounded-xl text-white hover:bg-indigo-100 hover:text-black shadow-black shadow-md shadow-transparent"
+            className="m-2 p-2 bg-indigo-500 rounded text-white hover:bg-indigo-100 hover:text-black shadow-black shadow-md shadow-transparent"
             href={"./"}
           >
             Geri
           </Link>
           
-          <Link className="m-4 p-4 bg-indigo-500 rounded-xl text-white hover:bg-indigo-100 hover:text-black shadow-black shadow-md shadow-transparent" href={{pathname:"../api/add-row",query:{user:user,search:location,result:counters.reduce((accumulator, currentValue) => {
+          <Link className="m-2 p-2 bg-indigo-500 rounded text-white hover:bg-indigo-100 hover:text-black shadow-black shadow-md shadow-transparent" href={{pathname:"../api/add-row",query:{user:user,search:location,result:isNaN(counters.reduce((accumulator, currentValue) => {
                     return accumulator + currentValue;
                   }, 0) /
                     (counters.length -
-                      counters.filter((str) => str === 0).length)}}}>
+                      counters.filter((str) => str === 0).length)) ? 0 : counters.reduce((accumulator, currentValue) => {
+                        return accumulator + currentValue;
+                      }, 0) /
+                        (counters.length -
+                          counters.filter((str) => str === 0).length)}}}>
                         Gönder
                         </Link>
         </footer>
